@@ -60,7 +60,8 @@ function game() {
            playerSelection != "paper" &&
            playerSelection != "scissors" &&
            playerSelection != null) {
-        console.log(`${playerNoFormat} isn't a valid option, try again please!`);
+        console.log(`"${playerNoFormat}" isn't a valid option, try again please!`);
+        console.log(`\n`);
         playerNoFormat = prompt("Type what you choose: rock, paper or scissors?");
         playerSelection = playerNoFormat.toLowerCase();
     }
