@@ -153,6 +153,7 @@ function toPrint(playerSelection, computerSelection) {
     let resultPlayer = formatString(playerSelection);
 
     // to print in console
+    console.log(`\n`);
     console.log(`The computer picked ${resultComputer}!`);
     console.log(`You picked ${resultPlayer}!`);
 
