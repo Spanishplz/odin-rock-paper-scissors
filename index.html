@@ -4,8 +4,86 @@
         <title>Rock-Paper-Scissor!</title>
         <meta charset="utf-8" />
         <script src="script.js" defer></script>
+        <link rel="stylesheet" href="css_reset.css">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        <header>
+            <div id="header" class="seeborder title">
+                <h1 >ROCK - PAPER - SCISSORS!</h1>
+            </div>
+        </header>
 
-    </body>
+        <div id="main" class="centered">
+            <div id="game" class="seeborder">
+                <div id="weapons">
+                    <div id="rock" class="weapon">
+                        <img class="weapon" src="media/rock-finished.png" alt="A hand making a fist, like a rock!"  id="rock"/>
+                    </div>
+                    <div class="weapon" id="paper">
+                        <img class="weapon" src="media/paper-finished.png" alt="An open hand, making a paper!"  id="paper"/>
+                    </div>
+                    <div class="weapon" id="scissors">
+                        <img class="weapon" src="media/scissors-finished.png" alt="A hand looking like scissors"  id="scissors"/>
+                    </div>
+                </div>
+                <div id="rounds">
+                    <div id="round-counter">
+                        <div id="rounds-number" class="seeborder">
+                            <p>Round number:</p>
+                            <div id="round-number">1 of 5</div>
+                        </div>
+                        <div class="button restart"> restar button </div>
+                    </div>
+                    <div id="matchup">
+                        <div class="match-piece seeborder" id="player-selection">
+                            <div class="weapon">
+                                <!-- <img src="media/rock-finished.png" alt="A hand making a fist, like a rock!" /> -->
+                                <img src="media/transparency-box.png" alt="A hand making a fist, like a rock!"  class="weapon" id="transparent"/>
+                            </div>
+                        </div>
+                        <div class="match-piece seeborder" id="vs-tag">
+                            <p>vs</p>
+                        </div>
+                        <div class="match-piece seeborder" id="computer-selection">
+                            <div class="weapon">
+                                <!-- <img src="media/scissors-finished.png" alt="A hand looking like scissors" /> -->
+                                <img src="media/transparency-box.png" alt="A hand making a fist, like a rock!"  class="weapon" id="transparent"/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="results-box">
+                        <div class="seeborder result-box" id="current-results">
+                            <p>round results</p>
+                        </div>
+                    </div>
+                    <div class="results-box"></div>
+                    <div id="scores">
+                        <div>
+                            <p>Player</p>
+                        </div>
+                        <div class="seeborder score-box" id="player-score">0</div>
+                        <p>to</p>
+                        <div class="seeborder score-box" id="computer-score">7</div>
+                        <div>
+                            <p>Computer</p>
+                        </div>
+                    </div>
+                    <div class="seeborder result-box" id="final-results">
+                        <p>final results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="extras" class="seeborder">
+            <div id="hotkeys"></div>
+            <div id="instructions"></div>
+            <div id="final-result"></div>
+        </div>
+        <footer>
+            this is a footer
+        </footer>
+    </body> 
 </html>
