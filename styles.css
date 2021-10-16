@@ -171,11 +171,24 @@ div#extras{
 
 }
 
+div .div-weapon {
+    height: 200px;
+}
 /* classes */
+
+div #computer-selection {
+    /* width: 200px; */
+    /* height: 200px; */
+}
+
 
 footer {
     border: 1px solid black;
 
+}
+
+.non-interactive {
+    pointer-events: none;
 }
 
 @keyFrames opacity {

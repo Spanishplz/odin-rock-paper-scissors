@@ -13,17 +13,16 @@
                 <h1 >ROCK - PAPER - SCISSORS!</h1>
             </div>
         </header>
-
         <div id="main" class="centered">
             <div id="game" class="seeborder">
                 <div id="weapons">
-                    <div id="rock" class="weapon">
+                    <div id="rock-div" class="weapon div-weapon">
                         <img class="weapon" src="media/rock-finished.png" alt="A hand making a fist, like a rock!"  id="rock"/>
                     </div>
-                    <div class="weapon" id="paper">
+                    <div class="weapon div-weapon" id="paper-div">
                         <img class="weapon" src="media/paper-finished.png" alt="An open hand, making a paper!"  id="paper"/>
                     </div>
-                    <div class="weapon" id="scissors">
+                    <div class="weapon div-weapon" id="scissors-div">
                         <img class="weapon" src="media/scissors-finished.png" alt="A hand looking like scissors"  id="scissors"/>
                     </div>
                 </div>
@@ -37,18 +36,18 @@
                     </div>
                     <div id="matchup">
                         <div class="match-piece seeborder" id="player-selection">
-                            <div class="weapon">
+                            <div class="weapon" id="chosen-weapon">
                                 <!-- <img src="media/rock-finished.png" alt="A hand making a fist, like a rock!" /> -->
-                                <img src="media/transparency-box.png" alt="A hand making a fist, like a rock!"  class="weapon" id="transparent"/>
+                                <img src="media/transparency-box.png" alt="A hand making a fist, like a rock!"  class="weapon" id=""/>
                             </div>
                         </div>
                         <div class="match-piece seeborder" id="vs-tag">
                             <p>vs</p>
                         </div>
                         <div class="match-piece seeborder" id="computer-selection">
-                            <div class="weapon">
+                            <div class="weapon" id="computer-play">
                                 <!-- <img src="media/scissors-finished.png" alt="A hand looking like scissors" /> -->
-                                <img src="media/transparency-box.png" alt="A hand making a fist, like a rock!"  class="weapon" id="transparent"/>
+                                <img src="media/transparency-box.png" alt="A hand making a fist, like a rock!"  class="weapon" id="empty-box"/>
                             </div>
 
                         </div>
@@ -63,9 +62,13 @@
                         <div>
                             <p>Player</p>
                         </div>
-                        <div class="seeborder score-box" id="player-score">0</div>
+                        <div class="seeborder score-box" id="player-score-duv">
+                            <p id="player-score-number">0</p>
+                        </div>
                         <p>to</p>
-                        <div class="seeborder score-box" id="computer-score">7</div>
+                        <div class="seeborder score-box" id="computer-score-div">
+                            <p id="computer-score-number">0</p>
+                        </div>
                         <div>
                             <p>Computer</p>
                         </div>

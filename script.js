@@ -1,26 +1,171 @@
-
-// console.log(playRound(playerChoice, computerPlay));
-// console.log(playerChoice());
-
+const weapons = document.querySelectorAll('img.weapon');
+let weaponsArray = Array.from(weapons);
 
 
-playGame();
+// THIS IS THE MAIN GAME SO FAR
+newPlayGame();
+function newPlayGame() {
+    for(let i = 0; i <= weaponsArray.length-3; i++) {
+        weaponsArray[i].addEventListener('click', (e) => {
+            // console.log(weaponsArray[i].id);
+            let choice = weaponsArray[i].id; // this is "rock";
+            result = playRound(choice, computerPlay());
+            // blockOtherSelections(choice);
+            moveImage(choice);
+            console.log(result);
+            countScore(result);
+            return result;
+        });
+    }
+}
 
-function playGame() {
 
-    const weapons = document.querySelectorAll('img.weapon');
-    let weaponsArray = Array.from(weapons);
-    console.log(weaponsArray);
+// get the rounds and upgrade them
+// for(let i = 0; i < 10; i ++) {
+//     let gorro = "lose"
+//     countScore(gorro);
+// };
+function countScore(result) {
+    let playerScore = document.getElementById('player-score-number');
+    let computerScore =document.getElementById('computer-score-number');
+    let playerScoreNumber = parseInt(playerScore.textContent);
+    let computerScoreNumber = parseInt(computerScore.textContent);
+    console.log(playerScoreNumber);
+    console.log(computerScoreNumber);
+    if (result === "lose") {
+        computerScore.textContent = computerScoreNumber + 1;
 
-    weaponsArray.forEach((element) => {
-        element.addEventListener('click', (e) => {
-            // console.log(element.id);
-            let choice = element.id;
-            console.log(playRound(choice, computerPlay()));
+    } else if (result === "win") {
+        //add one to the placer score
+        playerScore.textContent = playerScoreNumber + 1;
+
+    } else {
+        //add one to the computer score
+        return;
+    }
+}
+
+// function to give the results using the return value
+// of playRound, playerSelection and computeRSelection
+// Special cases for scissors
+// function winnerRoundDecision(playerSelection, computerSelection, roundResult) {
+//     let player = formatString(playerSelection);
+//     let computer = formatString(computerSelection);
+
+//     if (roundResult === "tie") {
+//         if (playerSelection === "scissors") {
+//             console.log(`It's a tie! ${player} tie with ${computer}!`);
+//         } else {
+//             console.log(`It's a tie! ${player} ties with ${computer}!`);
+//         }
+//     } else if (roundResult === "win") {
+//         if (playerSelection === "scissors") {
+//             console.log(`You win! ${player} beat ${computer}!`);
+//         } else {
+//             console.log(`You win! ${player} beats ${computer}!`);
+//         }
+
+//     } else {
+//         if (computerSelection === "scissors") {
+//             console.log(`You lose! ${computer} beat ${player}!`);
+//         } else {
+//             console.log(`You lose! ${computer} beats ${player}!`);
+//         }
+
+//     }
+// }
+
+// Moves the image and makes it non-interactive for the time the "fight" is going
+function moveImage(choice){ // choice
+    // let choice = "rock";
+    // this needs to pick depending on click
+    const imageParent = document.querySelector(`div #${choice}-div`);
+    const image = document.getElementById(`${choice}`);
+    image.style.backgroundColor = "red";
+    let vsParent = document.getElementById('chosen-weapon');
+    let oldChild = document.querySelector('#chosen-weapon img');
+    vsParent.replaceChild(image, oldChild);
+    // image.classList.add('non-interactive');
+    // blockOtherSelections(choice);
+
+    let allImages = document.querySelectorAll('img.weapon');
+    let allImagesArray = Array.from(allImages);
+
+    allImagesArray.forEach((element)=> {
+        element.classList.add("non-interactive");
+        console.log(element);
+    });
+
+    setTimeout(()=> {
+        vsParent.replaceChild(oldChild,image);
+        imageParent.appendChild(image);
+        // this needed to be inside the setTimeout
+        allImagesArray.forEach((element)=> {
+            element.classList.remove("non-interactive");
 
         });
-    });
+    }, 1000);
+
 };
+
+
+
+function blockOtherSelections(choice) {
+    let rock = document.getElementById('rock');
+    let paper = document.getElementById('paper');
+    let scissors = document.getElementById('scissors');
+
+    if (choice === "rock") {
+        paper.classList.add('non-interactive');
+        scissors.classList.add('non-interactive');
+    } else if (choice === "paper") {
+        rock.classList.add('non-interactive');
+        scissors.classList.add('non-interactive');
+    } else {
+        rock.classList.add('non-interactive');
+        paper.classList.add('non-interactive');
+    }
+}
+
+// need to add the computer image
+function computerImage(finalValue) {
+    let vsComputer = document.getElementById('computer-play');
+    let whiteSelection = document.getElementById('empty-box');
+    if (whiteSelection === null)  return;
+    // console.log(whiteSelection);
+    // console.log(vsComputer);
+    // vsComputer.style.backgroundColor = 'purple';
+    // console.log(vsComputer);
+    // console.log(whiteSelection);
+    let removedChild = vsComputer.removeChild(whiteSelection);
+    let newImage = document.createElement('img');
+    newImage.setAttribute("src", "media/rock-finished.png");
+    vsComputer.appendChild(newImage);
+
+    if (finalValue === "rock") {
+        newImage.setAttribute("src", "media/rock-finished.png");
+        vsComputer.appendChild(newImage);
+    } else if (finalValue === "paper") {
+        newImage.setAttribute("src", "media/paper-finished.png");
+        vsComputer.appendChild(newImage);
+    } else if (finalValue === "scissors") {
+        newImage.setAttribute("src", "media/scissors-finished.png");
+        vsComputer.appendChild(newImage);
+    }
+    setTimeout(function() {
+        vsComputer.removeChild(newImage);
+        vsComputer.appendChild(removedChild);
+    }, 1000);
+}
+
+
+
+
+
+
+
+
+
 
 // THE COMPUTER SELECTION
 function computerPlay() {
@@ -35,6 +180,7 @@ function computerPlay() {
         finalValue = 'Scissors';
     }
     finalValue = finalValue.toLowerCase();
+    computerImage(finalValue);
     return finalValue;
 }
 
@@ -53,51 +199,9 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
-function changeImages(result) {
-    
-}
 
 
 // choose your weapon
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // fiveMatches();
 
@@ -178,35 +282,6 @@ function changeImages(result) {
 // }
 
 
-// function to give the results using the return value
-// of playRound, playerSelection and computeRSelection
-// Special cases for scissors
-// function winnerRoundDecision(playerSelection, computerSelection, roundResult) {
-//     let player = formatString(playerSelection);
-//     let computer = formatString(computerSelection);
-
-//     if (roundResult === "tie") {
-//         if (playerSelection === "scissors") {
-//             console.log(`It's a tie! ${player} tie with ${computer}!`);
-//         } else {
-//             console.log(`It's a tie! ${player} ties with ${computer}!`);
-//         }
-//     } else if (roundResult === "win") {
-//         if (playerSelection === "scissors") {
-//             console.log(`You win! ${player} beat ${computer}!`);
-//         } else {
-//             console.log(`You win! ${player} beats ${computer}!`);
-//         }
-
-//     } else {
-//         if (computerSelection === "scissors") {
-//             console.log(`You lose! ${computer} beat ${player}!`);
-//         } else {
-//             console.log(`You lose! ${computer} beats ${player}!`);
-//         }
-
-//     }
-// }
 // random generation of the computer selection
 
 // formats the results capitalizing the first letter
@@ -238,6 +313,8 @@ function changeImages(result) {
 // }
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//old
 
 
 
@@ -253,11 +330,45 @@ function changeImages(result) {
 
 
 
+// playGame(); // with forEach()
+
+// function playGame() {
+
+//     weaponsArray.forEach((element) => {
+//         element.addEventListener('click', (e) => {
+//             // console.log(element.id);
+//             let choice = element.id;
+//             console.log(playRound(choice, computerPlay()));
+
+//         });
+//     });
+// };
 
 
 
+// Adds a non-needed extra event
+// console.log(playRound(playerChoice, computerPlay));
+// console.log(playerChoice());
 
+// moveImage()
 
+// function moveImage(choice){
+//     // this needs to pick depending on click
+//     const imageParent = document.querySelector('div #rock-div');
+//     const image = document.getElementById('rock');
+
+//     image.addEventListener('click', () => {
+//         // image.style.backgroundColor = "red";
+//         let vsParent = document.getElementById('chosen-weapon');
+//         // let oldChild = document.querySelector('chosen-weapon.img');
+//         let oldChild = document.querySelector('#chosen-weapon img');
+//         vsParent.replaceChild(image, oldChild);
+//         setTimeout(()=> {
+//             vsParent.replaceChild(oldChild,image);
+//             imageParent.appendChild(image);
+//         }, 1000);
+//     });
+// };
 
 
 
