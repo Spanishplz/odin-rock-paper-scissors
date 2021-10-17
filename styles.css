@@ -120,7 +120,7 @@ div#matchup img {
     flex: 1 0 auto;
     max-width: 200px;
     max-height: 200px;
-    background-color: lightblue;
+    /* background-color: lightblue; */
 }
 div#scores {
     margin-left: 26px;
