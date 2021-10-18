@@ -1,177 +1,109 @@
 
 const weapons = document.querySelectorAll('img.weapon');
 let weaponsArray = Array.from(weapons);
+let counter = 1;
 
+// 2 functions needed game + reset
+btnResetCounter();
+newPlayGame();
 
 // THIS IS THE MAIN GAME SO FAR
-// newPlayGame();
-// let result = newPlayGame();
-// fiveRounds(result);
-
-console.log(newPlayGame());
 function newPlayGame() {
-    let counter = 1;
-
     for(let i = 0; i <= weaponsArray.length-3; i++) {
         weaponsArray[i].addEventListener('click', (e) => {
+            if (counter === 5) {
+                fiveRoundsPrintResult();
+            }else if (counter > 5) {
+                return;
+            }
             let choice = weaponsArray[i].id; // this is "rock";
             let computerPlayArray = computerPlay();
             let computerSelection = computerPlayArray[0];
+            // console.log(computerSelection);
             let computerImageSelection = computerPlayArray[1];
+            // console.log(computerImageSelection);
 
             result = playRound(choice, computerSelection);
+            currentRound(counter);
             moveImage(choice);
             imageColors(choice, computerImageSelection, result);
-            console.log(result);
+            roundPrintResult(result);
+            // console.log(result);
             countScore(result);
             console.log(counter);
             counter++;
             // return counter;
         });
-        return counter;
     }
-
 }
-btnResetCounter();
+
+// round out of 5
+function currentRound(counter) {
+    let numberPara = document.getElementById('round-number-number');
+    numberPara.textContent = `${counter} out of 5`;
+}
+
+// button to reset the counter
 function btnResetCounter() {
     let btn = document.getElementById('reset-btn');
-    // let counterHolder = counter;
     btn.addEventListener('click', () => {
-        // counterHolder = 0;
-        // console.log(counterHolder);
-        console.log("button working");
-
+        resetRoundResult();
+        makeRoundsCero();
+        makeScoreCero();
+        resetFinalRoundResults();
+        counter = 1;
+        // console.log(counter);
+        return counter;
 
     });
 };
 
+// function to reset the round scores
+function makeScoreCero() {
+    let playerScore = document.getElementById('player-score-number');
+    let computerScore =document.getElementById('computer-score-number');
+    playerScore.textContent = "0";
+    computerScore.textContent = "0";
 
-
-
-// round counter that changes to class non-interactive
-// function roundCounter() {
-//     counter = 1;
-
-//     for(let i = 0; i <= weaponsArray.length-3; i++) {
-//         weaponsArray[i].addEventListener('click', (e) => {
-//             // console.log(weaponsArray[i].id);
-//             // let choice = weaponsArray[i].id; // this is "rock";
-//             let roundOf = document.getElementById('round-number-div').firstChild;
-//             roundOf.textContent = `${counter} out of 5`;
-//             if (counter > 4) {
-//                 let allImages = document.querySelectorAll('img.weapon');
-//                 let allImagesArray = Array.from(allImages);
-//                 console.log(allImagesArray);
-
-//                 allImagesArray[i].classList.add("non-interactive");
-//                 // allImagesArray.forEach((element)=> {
-//                 //     element.classList.add("non-interactive");
-//                 // });
-//                 // return;
-//             }
-//             counter++;
-//             console.log(counter);
-//         });
-//     }
-// };
-
-
-
-// completeGame();
-// let roundMax = 5;
-// function completeGame() {
-//     let counter = 0;
-
-// //    every time newPlay gets executed, need to add one.
-// }
-
-
-
-
-function fiveRounds(result) {
-    let roundNumberPara = document.getElementById('round-number-div').firstChild;
-    let roundResultsPara = document.getElementById('current-results').firstChild;
-    let rounds = 0;
-    roundResultsPara.textContent = `You ${result}`;
 }
 
+function makeRoundsCero() {
+    let numberPara = document.getElementById("round-number-number");
+    numberPara.textContent = "1 out of 5";
+}
 
+function resetFinalRoundResults(){
+    let finalResultPara = document.getElementById("final-results");
+    finalResultPara.textContent = "Let's see who's BETTER!";
 
-// function that plays 5 times.
-// calls the play function 5 times
-// keeps track of the number of rounds
-// prints the round result and the final message.
+}
 
-// fiveRounds();
-// function fiveRounds() {
-//     let roundNumberDiv = document.getElementById('round-number-div');
-//     let roundPara = document.createElement('p');
-//     let roundResults = document.getElementById('current-results');
-//     let roundResultsPara = document.createElement('p');
-//     let rounds = 1;
-//     // while (rounds < 6) {
-//     //     let result = newPlayGame();
+function resetRoundResult() {
+    let roundResultsPara = document.getElementById('current-results-para');
+    roundResultsPara.textContent = "Let's see what happens on the first round!";
+}
 
-//     //     roundPara.textContent = `${rounds} out of 5`;
-//     //     roundNumberDiv.appendChild(roundPara);
+function roundPrintResult(result) {
+    // let roundNumberPara = document.getElementById('round-num+ber-div').firstChild;
+    let roundResultsPara = document.getElementById('current-results-para');
+    roundResultsPara.textContent = `You ${result} the round!`;
+}
 
-//     //     roundResults.appendChild(roundResultsPara);
-//     //     roundResultsPara.textContent = `You ${result}`;
-//     //     rounds++;
-//     // }
-// }
+function fiveRoundsPrintResult(){
+    let finalResultPara = document.getElementById("final-results");
+    let playerResultPara = document.getElementById("player-score-number");
+    let computerResultPara = document.getElementById("computer-score-number");
+    let playerWins = Number(playerResultPara.textContent);
+    let computerWins = Number(computerResultPara.textContent);
+    if ( playerWins === computerWins) {
+        finalResultPara.textContent = `You tied the game with a computer! HA!`;
+    } else if (playerWins > computerWins) {
+        finalResultPara.textContent = `I never doubted you! YOU WIN!`;
+    } else {
+        finalResultPara.textContent = `Well... keep trying? Or not... YOU LOSE!`;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-// plays the game 5 times and keeps the score
-// function fiveMatches() {
-
-//     let playerScore = 0;
-//     let computerScore = 0;
-
-//     for (i = 1; i <= 5; i++) {
-//         console.log(`\n`);
-//         console.log(`Round ${i}... FIGHT!`);
-//         console.log(`\n`);
-//         let result = game();
-//         // console.log(result);
-//         if (result === "tie") {
-//             //score doesnt move
-//         } else if (result === "win") {
-//             playerScore += 1;
-//         } else {
-//             computerScore += 1;
-//         }
-//         console.log(`Computer score: ${computerScore}`);
-//         console.log(`Player score: ${playerScore}`);
-//     }
-
-//     // if (playerScore === computerScore) {
-//     //     console.log(`\n`);
-//     //     console.log(`I thought you were better than this...`);
-//     //     console.log(`FINAL SCORE: \n${computerScore} - ${playerScore}`);
-//     //     console.log(`IT'S A TIIIIIIIIIIIIIEEEEEE! `);
-//     // } else if (playerScore > computerScore) {
-//     //     console.log(`\n`);
-//     //     console.log(`Not so much AI in here, eh? Hehehe`);
-//     //     console.log(`FINAL SCORE: \n${computerScore} - ${playerScore}`);
-//     //     console.log(`YOUUUUUU ARE THE CHAAAAAAAAMPIONNN!!!`);
-//     // } else {
-//     //     console.log(`\n`);
-//     //     console.log(`I don't wanna say I'm disappointed...but I a...m...`);
-//     //     console.log(`FINAL SCORE: \n${computerScore} - ${playerScore}`);
-//     //     console.log(`YOU LOOOOOOSE! LOOOOOSE....LOOOSE...LOOSE...`);
-//     // }
-// }
 
 
 // make the color of both images change depending on results
@@ -192,27 +124,18 @@ function imageColors(choice, computerImageSelection, result) {
         playerChoice.style.backgroundColor = "red";
         computerChoice.style.backgroundColor = "green";
     }
-
-
-
-
-    //     // for just 1 second
-    //     //make winner green
-    //     //make loser red
-    //     //make tie yellow
-    // }
 }
 
 
 
-
+// adds the number of wins/losses to the paragraph
 function countScore(result) {
     let playerScore = document.getElementById('player-score-number');
     let computerScore =document.getElementById('computer-score-number');
     let playerScoreNumber = parseInt(playerScore.textContent);
     let computerScoreNumber = parseInt(computerScore.textContent);
-    console.log(playerScoreNumber);
-    console.log(computerScoreNumber);
+    // console.log(playerScoreNumber);
+    // console.log(computerScoreNumber);
     if (result === "lose") {
         computerScore.textContent = computerScoreNumber + 1;
 
@@ -226,40 +149,6 @@ function countScore(result) {
 
 
 }
-
-
-
-
-
-// function to give the results using the return value
-// of playRound, playerSelection and computeRSelection
-// Special cases for scissors
-// function winnerRoundDecision(playerSelection, computerSelection, roundResult) {
-//     let player = formatString(playerSelection);
-//     let computer = formatString(computerSelection);
-
-//     if (roundResult === "tie") {
-//         if (playerSelection === "scissors") {
-//             console.log(`It's a tie! ${player} tie with ${computer}!`);
-//         } else {
-//             console.log(`It's a tie! ${player} ties with ${computer}!`);
-//         }
-//     } else if (roundResult === "win") {
-//         if (playerSelection === "scissors") {
-//             console.log(`You win! ${player} beat ${computer}!`);
-//         } else {
-//             console.log(`You win! ${player} beats ${computer}!`);
-//         }
-
-//     } else {
-//         if (computerSelection === "scissors") {
-//             console.log(`You lose! ${computer} beat ${player}!`);
-//         } else {
-//             console.log(`You lose! ${computer} beats ${player}!`);
-//         }
-
-//     }
-// }
 
 // Moves the image and makes it non-interactive for the time the "fight" is going
 function moveImage(choice){ // choice
@@ -295,23 +184,6 @@ function moveImage(choice){ // choice
 };
 
 
-//didnt work
-// function blockOtherSelections(choice) {
-//     let rock = document.getElementById('rock');
-//     let paper = document.getElementById('paper');
-//     let scissors = document.getElementById('scissors');
-
-//     if (choice === "rock") {
-//         paper.classList.add('non-interactive');
-//         scissors.classList.add('non-interactive');
-//     } else if (choice === "paper") {
-//         rock.classList.add('non-interactive');
-//         scissors.classList.add('non-interactive');
-//     } else {
-//         rock.classList.add('non-interactive');
-//         paper.classList.add('non-interactive');
-//     }
-// }
 
 // need to add the computer image
 function computerImage(finalValue) {
@@ -337,17 +209,8 @@ function computerImage(finalValue) {
         vsComputer.removeChild(newImage);
         vsComputer.appendChild(removedChild);
     }, 1000);
-
     return newImage;
-}
-
-
-
-
-
-
-
-
+};
 
 
 // THE COMPUTER SELECTION
@@ -366,7 +229,7 @@ function computerPlay() {
     let computerPlayImage = computerImage(finalValue);
     // console.log(computerPlayImage);
     let computerPlayArray = [];
-    computerPlayArray.push("scissors");
+    computerPlayArray.push(finalValue);
     computerPlayArray.push(computerPlayImage);
     return computerPlayArray;
     // return finalValue;
@@ -386,181 +249,5 @@ function playRound(playerSelection, computerSelection) {
     }
     return result;
 }
-
-
-
-// choose your weapon
-
-
-// fiveMatches();
-
-// plays the game 5 times and keeps the score
-// function fiveMatches() {
-
-//     let playerScore = 0;
-//     let computerScore = 0;
-
-//     for (i = 1; i <= 5; i++) {
-//         console.log(`\n`);
-//         console.log(`Round ${i}... FIGHT!`);
-//         console.log(`\n`);
-//         let result = game();
-//         // console.log(result);
-//         if (result === "tie") {
-//             //score doesnt move
-//         } else if (result === "win") {
-//             playerScore += 1;
-//         } else {
-//             computerScore += 1;
-//         }
-//         console.log(`Computer score: ${computerScore}`);
-//         console.log(`Player score: ${playerScore}`);
-//     }
-
-//     // if (playerScore === computerScore) {
-//     //     console.log(`\n`);
-//     //     console.log(`I thought you were better than this...`);
-//     //     console.log(`FINAL SCORE: \n${computerScore} - ${playerScore}`);
-//     //     console.log(`IT'S A TIIIIIIIIIIIIIEEEEEE! `);
-//     // } else if (playerScore > computerScore) {
-//     //     console.log(`\n`);
-//     //     console.log(`Not so much AI in here, eh? Hehehe`);
-//     //     console.log(`FINAL SCORE: \n${computerScore} - ${playerScore}`);
-//     //     console.log(`YOUUUUUU ARE THE CHAAAAAAAAMPIONNN!!!`);
-//     // } else {
-//     //     console.log(`\n`);
-//     //     console.log(`I don't wanna say I'm disappointed...but I a...m...`);
-//     //     console.log(`FINAL SCORE: \n${computerScore} - ${playerScore}`);
-//     //     console.log(`YOU LOOOOOOSE! LOOOOOSE....LOOOSE...LOOSE...`);
-//     // }
-// }
-
-// function game() {
-//     // let playerNoFormat = prompt("Type what you choose: rock, paper or scissors?");
-
-//     // // Asks for some input, as long as it isn't null or an empty string
-//     // while (playerNoFormat === null || playerNoFormat == "") {
-//     //     alert('Please, enter one option! (Rock, paper or scissors)');
-//     //     playerNoFormat = prompt("Type what you choose: rock, paper or scissors?");
-//     // }
-
-//     // // formatting the user's input and receiving the input from the computerPlay()
-//     // // function
-//     // let playerSelection = playerNoFormat.toLowerCase();
-//     let playerSelection = "Rock";
-//     const computerSelection = computerPlay();
-
-//     // Makes you choose one valid option to continue, otherwise you stay here
-//     // while (playerSelection != "rock" &&
-//     //        playerSelection != "paper" &&
-//     //        playerSelection != "scissors" &&
-//     //        playerSelection != null) {
-//     //     console.log(`"${playerNoFormat}" isn't a valid option, try again please!`);
-//     //     console.log(`\n`);
-//     //     playerNoFormat = prompt("Type what you choose: rock, paper or scissors?");
-//     //     playerSelection = playerNoFormat.toLowerCase();
-//     // }
-
-//     toPrint(playerSelection, computerSelection);
-//     let roundResult = playRound(playerSelection, computerSelection);
-//     // winnerRoundDecision(playerSelection, computerSelection, roundResult);
-//     // console.log(roundResult);
-
-//     return roundResult;
-//     // console.log(roundResult);
-// }
-
-
-// random generation of the computer selection
-
-// formats the results capitalizing the first letter
-// to be able to print them
-// function formatString(textToFormat) {
-//     let firstLetter = textToFormat.charAt(0); // h
-//     let toCaps = firstLetter.toUpperCase(); // H
-//     let result = toCaps + textToFormat.substring(1);
-
-//     return result;
-
-// }
-// prints the results in the console
-// function toPrint(playerSelection, computerSelection) {
-
-//     let resultComputer = formatString(computerSelection);
-//     let resultPlayer = formatString(playerSelection);
-
-//     // to print in console
-//     console.log(`\n`);
-//     console.log(`The computer picked ${resultComputer}!`);
-//     console.log(`You picked ${resultPlayer}!`);
-
-// }
-
-// computerPlay();
-// for (i = 0; i < 100; i++) {
-//     computerPlay();
-// }
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//old
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// playGame(); // with forEach()
-
-// function playGame() {
-
-//     weaponsArray.forEach((element) => {
-//         element.addEventListener('click', (e) => {
-//             // console.log(element.id);
-//             let choice = element.id;
-//             console.log(playRound(choice, computerPlay()));
-
-//         });
-//     });
-// };
-
-
-
-// Adds a non-needed extra event
-// console.log(playRound(playerChoice, computerPlay));
-// console.log(playerChoice());
-
-// moveImage()
-
-// function moveImage(choice){
-//     // this needs to pick depending on click
-//     const imageParent = document.querySelector('div #rock-div');
-//     const image = document.getElementById('rock');
-
-//     image.addEventListener('click', () => {
-//         // image.style.backgroundColor = "red";
-//         let vsParent = document.getElementById('chosen-weapon');
-//         // let oldChild = document.querySelector('chosen-weapon.img');
-//         let oldChild = document.querySelector('#chosen-weapon img');
-//         vsParent.replaceChild(image, oldChild);
-//         setTimeout(()=> {
-//             vsParent.replaceChild(oldChild,image);
-//             imageParent.appendChild(image);
-//         }, 1000);
-//     });
-// };
-
-
-
-
 
 
