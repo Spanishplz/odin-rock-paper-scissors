@@ -8,58 +8,72 @@ let weaponsArray = Array.from(weapons);
 // let result = newPlayGame();
 // fiveRounds(result);
 
-newPlayGame();
+console.log(newPlayGame());
 function newPlayGame() {
-    let counter = 0;
+    let counter = 1;
+
     for(let i = 0; i <= weaponsArray.length-3; i++) {
         weaponsArray[i].addEventListener('click', (e) => {
-            // console.log(weaponsArray[i].id);
             let choice = weaponsArray[i].id; // this is "rock";
-            // computerPlayArray.push(finalValue, computerPlayImage);
             let computerPlayArray = computerPlay();
             let computerSelection = computerPlayArray[0];
             let computerImageSelection = computerPlayArray[1];
+
             result = playRound(choice, computerSelection);
             moveImage(choice);
             imageColors(choice, computerImageSelection, result);
             console.log(result);
             countScore(result);
             console.log(counter);
-            if (counter >= 5 ){
-                fiveRounds(result);
-            } else counter++;
-
+            counter++;
+            // return counter;
         });
+        return counter;
     }
 
 }
-roundCounter();
-// function fiveRounds() {}
-function roundCounter() {
-    counter = 1;
+btnResetCounter();
+function btnResetCounter() {
+    let btn = document.getElementById('reset-btn');
+    // let counterHolder = counter;
+    btn.addEventListener('click', () => {
+        // counterHolder = 0;
+        // console.log(counterHolder);
+        console.log("button working");
 
-    for(let i = 0; i <= weaponsArray.length-3; i++) {
-        weaponsArray[i].addEventListener('click', (e) => {
-            // console.log(weaponsArray[i].id);
-            // let choice = weaponsArray[i].id; // this is "rock";
-            let roundOf = document.getElementById('round-number-div').firstChild;
-            roundOf.textContent = `${counter} out of 5`;
-            if (counter > 4) {
-                let allImages = document.querySelectorAll('img.weapon');
-                let allImagesArray = Array.from(allImages);
-                console.log(allImagesArray);
 
-                allImagesArray[i].classList.add("non-interactive");
-                // allImagesArray.forEach((element)=> {
-                //     element.classList.add("non-interactive");
-                // });
-                // return;
-            }
-            counter++;
-            console.log(counter);
-        });
-    }
+    });
 };
+
+
+
+
+// round counter that changes to class non-interactive
+// function roundCounter() {
+//     counter = 1;
+
+//     for(let i = 0; i <= weaponsArray.length-3; i++) {
+//         weaponsArray[i].addEventListener('click', (e) => {
+//             // console.log(weaponsArray[i].id);
+//             // let choice = weaponsArray[i].id; // this is "rock";
+//             let roundOf = document.getElementById('round-number-div').firstChild;
+//             roundOf.textContent = `${counter} out of 5`;
+//             if (counter > 4) {
+//                 let allImages = document.querySelectorAll('img.weapon');
+//                 let allImagesArray = Array.from(allImages);
+//                 console.log(allImagesArray);
+
+//                 allImagesArray[i].classList.add("non-interactive");
+//                 // allImagesArray.forEach((element)=> {
+//                 //     element.classList.add("non-interactive");
+//                 // });
+//                 // return;
+//             }
+//             counter++;
+//             console.log(counter);
+//         });
+//     }
+// };
 
 
 
