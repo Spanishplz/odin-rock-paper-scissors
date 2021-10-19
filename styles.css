@@ -6,17 +6,18 @@ html {
 
 }
 body {
-    background-color: grey;
+    /* background-color: grey; */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
+    background-image: url("media/desert.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-/* h1 { */
-/*     font-size: 30px; */
-/*     font-weight: 800; */
-/* } */
-
+p {
+    font-size: 18px;
+}
 div.centered {
     margin: auto;
 }
@@ -26,13 +27,15 @@ div.centered {
 }
 div#main {
     width: 95%;
-    background-color: gold;
+    display: flex;
+    /* background-color: gold; */
     min-width: 550px;
     /* display: flex; */
     /* flex-direction: row; */
     /* justify-content: center; */
     /* /\* align-items: stretch; *\/ */
     /* gap: 10px; */
+
 
 }
 .seeborder {
@@ -44,6 +47,7 @@ div#main #game {
     flex: 1 1 auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 
 }
 div#main #extras {
@@ -61,14 +65,20 @@ div#weapons {
     gap: 10px;
 }
 div#weapons img {
-    border: 1px solid black;
+    border: 2px solid black;
     flex: 1 0 auto;
     max-width: 200px;
     max-height: 200px;
     background-color: pink;
+    box-shadow: 3px 3px 5px black;
+    /* border-radius: 5px; */
 
     animation-duration: 1s;
     animation-name: opacity;
+}
+div#weapons img:hover {
+    border-color: white;
+    box-shadow: 3px 3px 5px grey;
 }
 .weapon {
     /* border: 2px solid green; */
@@ -101,10 +111,13 @@ div#round-number {
     /* height: 150px; */
 }
 div#rounds-number{
-    height: 100px;
+    /* width: 200px; */
+    padding: 30px;
+    /* height: 100px; */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
 }
 div#matchup {
     gap: 10px;
@@ -144,11 +157,13 @@ div#extras{
 }
 
 .result-box {
-    height: 100px;
-    /* width: 150px; */
+    /* height: 100px; */
+    width: 320px;
+    padding:  30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: nowrap;
     font-size: 12px;
     
 }
@@ -165,10 +180,13 @@ div#extras{
     height: 40px;
     width: 150px;
     margin-left: 50px;
-    border: 1px solid crimson;
-    border-radius: 50px;
-
-
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px black;
+}
+.button:hover {
+    border-color: white;
+    box-shadow: 3px 3px 5px grey;
 }
 
 div .div-weapon {
@@ -201,4 +219,15 @@ footer {
     100% {
         margin-right: 1;
     }
+}
+
+.avatar {
+    height: 300px;
+    width: auto;
+
+}
+#human-image {
+}
+
+#robot-image {
 }
