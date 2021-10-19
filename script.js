@@ -11,9 +11,7 @@ newPlayGame();
 function newPlayGame() {
     for(let i = 0; i <= weaponsArray.length-3; i++) {
         weaponsArray[i].addEventListener('click', (e) => {
-            if (counter === 5) {
-                fiveRoundsPrintResult();
-            }else if (counter > 5) {
+            if (counter > 5) {
                 return;
             }
             let choice = weaponsArray[i].id; // this is "rock";
@@ -31,6 +29,9 @@ function newPlayGame() {
             // console.log(result);
             countScore(result);
             console.log(counter);
+            if (counter === 5) {
+                fiveRoundsPrintResult();
+            }
             counter++;
             // return counter;
         });
@@ -99,7 +100,7 @@ function fiveRoundsPrintResult(){
         finalResultPara.textContent = `You tied the game with a computer! HA!`;
     } else if (playerWins > computerWins) {
         finalResultPara.textContent = `I never doubted you! YOU WIN!`;
-    } else {
+    } else if(playerWins < computerWins) {
         finalResultPara.textContent = `Well... keep trying? Or not... YOU LOSE!`;
     }
 }
