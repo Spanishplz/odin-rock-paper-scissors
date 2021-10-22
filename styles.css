@@ -223,7 +223,8 @@ footer {
 
 .avatar {
     height: 300px;
-    width: auto;
+    width: 200px;
+    /* width: auto; */
 
 }
 #human-image {
