@@ -1,10 +1,8 @@
-let choicesNumber = 3;
+// gets the computer choice
 function getComputerChoice(num) {
-    // get 3 numbers randomly
-
     let choice = Math.floor(Math.random() * 3 );
     let computerChoice;
-    console.log(choice);
+//    console.log(choice);
 
     if (choice === 0) {
         computerChoice = 'Rock';
@@ -26,40 +24,73 @@ function firstLetter(word) {
     return capitalizeWord;
 }
 
-let userInput = firstLetter(prompt('Please, select your champion! (Rock, Paper or Scissors)'));
-console.log('You chose: ' + userInput);
 
-let playerSelection = userInput;
-let computerSelection = getComputerChoice();
-
-console.log(playerSelection);
-console.log(computerSelection);
-
+// plays one round
 function playRound(playerSelection, computerSelection) {
     let result;
     //rock
     if (playerSelection == 'Rock' && computerSelection == 'Rock') {
-        result = 'It\'s a tie, Rock draws with Rock';
+        result = 'tie';
+        console.log('It\'s a tie! Rock draws with Rock');
     } else if (playerSelection == 'Rock' && computerSelection == 'Paper') {
-        result = 'You lose, Rock loses to Paper';
+        result = 'loss';
+        console.log('You lose! Rock loses to Paper');
     } else if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
-        result = 'You win, Rock beats Scissors ';
+        result = 'win';
+        console.log('You win! Rock beats Scissors');
         //paper
     } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
-        result = 'You win, Paper beats Rock';
+        result = 'win';
+        console.log('You win! Paper beats Rock');
     } else if (playerSelection == 'Paper' && computerSelection == 'Paper') {
-        result = 'It\'s a tie, Paper draws with Paper';
+        result = 'tie';
+        console.log('It\'s a tie! Paper draws with Paper');
     } else if (playerSelection == 'Paper' && computerSelection == 'Scissors') {
-        result = 'You lose, Paper loses to Scissors';
+        result = 'loss';
+        console.log('You lose! Paper loses to Scissors');
         //scissors
     } else if (playerSelection == 'Scissors' && computerSelection == 'Rock') {
-        result = 'You lose, Scissors loses to Rock';
+        result = 'loss';
+        console.log('You lose! Scissors loses to Rock');
     } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
-        result = 'You win, Scissors beats Paper';
+        result = 'win';
+        console.log('You win! Scissors beats Paper');
     } else if (playerSelection == 'Scissors' && computerSelection == 'Scissors') {
-        result = 'It\'s a tie, Scissors draws with Scissors';
+        result = 'tie';
+        console.log('It\'s a tie! Scissors draws with Scissors');
     }
     return result;
 }
 
-console.log(playRound(playerSelection, computerSelection));
+// console.log(playRound(playerSelection, computerSelection));
+// plays the game (5 rounds)
+function game() {
+    let playerScore = 0;
+    let computerScore = 0; 
+    for (i = 1; i < 6; i++) {
+        let roundNumber = i;
+        console.log('Round number: ' + i);
+        let userInput = firstLetter(prompt('Please, select your champion! (Rock, Paper or Scissors)'));
+//        console.log('You chose: ' + userInput);
+        let playerSelection = userInput;
+        let computerSelection = getComputerChoice();
+        console.log('You picked: ' + playerSelection + '.\n' + 'The computer picked: ' + computerSelection + '.');
+        let score = playRound(playerSelection, computerSelection);
+//        console.log(score);
+        if (score == 'win') {
+            playerScore++;
+        } else if (score == 'loss') {
+            computerScore++;
+        }
+        console.log('The score is: ' + playerScore + ' to ' + computerScore + '.');
+
+        // (score == 'win') ? playerScore++ :
+        //     (score == 'loss') ? computerScore++
+
+    }
+    (playerScore > computerScore) ? console.log(`CONGRATULATIONS YOU WON ${playerScore} to ${computerScore}, you are THE CHAMPION!` ) :
+        (playerScore < computerScore) ? console.log(`BEATEN by a computer ${playerScore} to ${computerScore}, I expected more from you!` ) :
+        console.log(`It\'s a tie ${playerScore} to ${computerScore}, better luck next time!`);
+
+}
+game();
