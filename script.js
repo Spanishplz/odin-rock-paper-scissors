@@ -14,7 +14,7 @@ function getComputerChoice(num) {
     return computerChoice;
 }
 // function to make users input case insensitive
-function firstLetter(word) {
+function capitalizeWord(word) {
     let toLower = word.toLowerCase();
     let toLowerCut = toLower.slice(1);
     let first = word[0];
@@ -70,7 +70,7 @@ function game() {
     for (i = 1; i < 6; i++) {
         let roundNumber = i;
         console.log('Round number: ' + i);
-        let userInput = firstLetter(prompt('Please, select your champion! (Rock, Paper or Scissors)'));
+        let userInput = capitalizeWord(prompt('Please, select your champion! (Rock, Paper or Scissors)'));
 //        console.log('You chose: ' + userInput);
         let playerSelection = userInput;
         let computerSelection = getComputerChoice();
