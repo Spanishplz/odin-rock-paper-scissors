@@ -1,3 +1,4 @@
+
 // gets the computer choice
 function getComputerChoice(num) {
     let choice = Math.floor(Math.random() * 3 );
@@ -70,8 +71,9 @@ function game() {
     for (i = 1; i < 6; i++) {
         let roundNumber = i;
         console.log('Round number: ' + i);
-        let userInput = capitalizeWord(prompt('Please, select your champion! (Rock, Paper or Scissors)'));
-//        console.log('You chose: ' + userInput);
+        // let userInput = capitalizeWord(prompt('Please, select your champion! (Rock, Paper or Scissors)'));
+        //        console.log('You chose: ' + userInput);
+        let userInput = 'rock';
         let playerSelection = userInput;
         let computerSelection = getComputerChoice();
         console.log('You picked: ' + playerSelection + '.\n' + 'The computer picked: ' + computerSelection + '.');
