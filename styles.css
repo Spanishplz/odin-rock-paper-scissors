@@ -47,6 +47,10 @@ body div {
     width: auto;
     height: 200px;
 }
+.flipped {
+    transform: scaleX(-1);
+}
+
 .footer {
     flex-grow: 1;
 }
@@ -59,7 +63,8 @@ body div {
 .center.main {
     flex-grow: 10;
 }
-.center.main.player {
+.center.main.player,
+.center.main.computer{
     display: flex;
     flex-direction: column;
 }
