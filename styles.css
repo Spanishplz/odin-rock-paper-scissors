@@ -44,8 +44,8 @@ body div {
     justify-content: stretch;
 }
 .five img {
-    width: auto;
     height: 200px;
+    width: auto;
 }
 .flipped {
     transform: scaleX(-1);
@@ -67,10 +67,31 @@ body div {
 .center.main.computer{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .center.side {
     flex-grow: 1;
 }
-.center.main.middle {
+.center.main.score {
+    border: 1px solid lightblue;
     flex-grow: 3;
+    display: flex;
+    align-items: center;
+
+}
+.scorebox {
+    flex: 0;
+    /* width: 200px; */
+    /* height: 200px; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.individual-scores {
+    display: flex;
+}
+
+.individual-scores > * {
+    flex-basis: 0;
 }
