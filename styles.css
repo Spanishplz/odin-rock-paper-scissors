@@ -17,6 +17,12 @@ body div {
 
 .header {
     flex-grow: 1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.header h1 {
+    border: 1px solid purple;
 }
 .content {
     flex-grow: 10;
@@ -37,12 +43,25 @@ body div {
     border: 1px solid green;
     justify-content: stretch;
 }
+.five img {
+    width: auto;
+    height: 200px;
+}
 .footer {
     flex-grow: 1;
 }
 
+.center {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
 .center.main {
     flex-grow: 10;
+}
+.center.main.player {
+    display: flex;
+    flex-direction: column;
 }
 .center.side {
     flex-grow: 1;
