@@ -2,3 +2,51 @@ header {
     border: 5px solid green;
 
 }
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+body div {
+    border: 1px solid red;
+    flex-grow: 1;
+}
+
+.header {
+    flex-grow: 1;
+}
+.content {
+    flex-grow: 10;
+    display: flex;
+}
+.content-div {
+    display: flex;
+    flex-direction: column;
+}
+/* .content-div > * { */
+/*     flex-grow: 1; */
+/* } */
+.five {
+    display:flex;
+}
+.five div {
+    flex-grow: 1;
+    border: 1px solid green;
+    justify-content: stretch;
+}
+.footer {
+    flex-grow: 1;
+}
+
+.center.main {
+    flex-grow: 10;
+}
+.center.side {
+    flex-grow: 1;
+}
+.center.main.middle {
+    flex-grow: 3;
+}
