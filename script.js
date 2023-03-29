@@ -8,16 +8,15 @@ const imagesArray = [...images];
 imagesArray.forEach( (image) => {
     image.addEventListener('click', () => {
         let value = image.getAttribute('data-selection');
-        console.log(value);
-        console.log(image);
+        // console.log(value);
+        // console.log(image);
         playerSelection = value;
         // console.log(playerSelection);
+        let computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection)
     })
 })
-console.log(playerSelection);
-// for (i = 0; i > 3; i++) {
-//     console. log(images.)
-// }
+
 
 
 
@@ -50,6 +49,7 @@ function capitalizeWord(word) {
 
 // plays one round
 function playRound(playerSelection, computerSelection) {
+
     let result;
     //rock
     if (playerSelection == 'Rock' && computerSelection == 'Rock') {
