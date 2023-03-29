@@ -62,8 +62,12 @@ footer {
 .five img {
     height: 140px;
     width: auto;
-    border: 2px solid gold;
+    border: 5px solid gold;
 }
+.player img:hover {
+    border: 5px solid green;
+}
+
 .flipped {
     transform: scaleX(-1);
 }
@@ -82,10 +86,12 @@ footer {
 }
 .center.main.player,
 .center.main.computer{
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 }
 .center.side {
     flex-grow: 1;

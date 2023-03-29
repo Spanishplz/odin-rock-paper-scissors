@@ -13,10 +13,24 @@ imagesArray.forEach( (image) => {
         playerSelection = value;
         // console.log(playerSelection);
         let computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection)
+        playRound(playerSelection, computerSelection);
     })
 })
 
+// computer selection border color change
+const computerImages = document.querySelectorAll('div.computer img');
+const computerImagesArray = [...computerImages];
+console.log(Array.isArray(computerImagesArray));
+console.log(computerImagesArray);
+
+changeColors(computerImagesArray);
+//changes color of the background at different times till a selection is made
+function changeColors(array) {
+    array.forEach((image) => {
+        console.log(image);
+        image.style.borderColor = 'purple';
+    });
+}
 
 
 
