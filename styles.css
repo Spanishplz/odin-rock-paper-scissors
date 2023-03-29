@@ -11,10 +11,7 @@ body {
 
 header {
     border: 5px solid green;
-    
-
 }
-<<<<<<< HEAD
 
 footer {
     border: 5px solid orange;
@@ -111,5 +108,4 @@ footer {
 
 .individual-scores > * {
     flex-basis: 0;
->>>>>>> 6c37428e358e8af10e411438c1da4c3fad4f7e90
 }
