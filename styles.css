@@ -3,12 +3,15 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
 }
 
 .body-div {
     flex-grow: 1;
 }
-
+.body > * {
+    flex-grow: 1;
+}
 header {
     border: 5px solid green;
 }
@@ -39,8 +42,7 @@ footer {
     border: 1px solid purple;
 }
 .content {
-    flex-grow: 10;
-    display: flex;
+    /* display: flex; this makes it responsive */
 }
 .content-div {
     display: flex;
@@ -52,14 +54,15 @@ footer {
 .five {
     display:flex;
 }
-.five div {
+.five > div {
     flex-grow: 1;
     border: 1px solid green;
     justify-content: stretch;
 }
 .five img {
-    height: 200px;
+    height: 100px;
     width: auto;
+    border: 2px solid gold;
 }
 .flipped {
     transform: scaleX(-1);
@@ -88,10 +91,12 @@ footer {
     flex-grow: 1;
 }
 .center.main.score {
-    border: 1px solid lightblue;
-    flex-grow: 3;
+    border: 1px solid red;
+    flex-grow: 5;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
 
 }
 .scorebox {
@@ -101,11 +106,18 @@ footer {
     display: flex;
     flex-direction: column;
     text-align: center;
+    border: 1px solid darkgreen;
 }
 .individual-scores {
     display: flex;
 }
-
+.score {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid hotpink;
+}
 .individual-scores > * {
-    flex-basis: 0;
+    flex: 1 1 0px;
+    width: 0;
+    overflow: hidden;
 }
