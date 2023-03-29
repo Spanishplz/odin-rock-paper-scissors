@@ -14,6 +14,7 @@ header {
     
 
 }
+<<<<<<< HEAD
 
 footer {
     border: 5px solid orange;
@@ -31,15 +32,84 @@ footer {
     flex-grow: 1;
 }
 
-.main .center {
-    background-color: green;
+.header {
+    flex-grow: 1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.header h1 {
+    border: 1px solid purple;
+}
+.content {
+    flex-grow: 10;
+    display: flex;
+}
+.content-div {
+    display: flex;
+    flex-direction: column;
+}
+/* .content-div > * { */
+/*     flex-grow: 1; */
+/* } */
+.five {
+    display:flex;
+}
+.five div {
+    flex-grow: 1;
+    border: 1px solid green;
+    justify-content: stretch;
+}
+.five img {
+    height: 200px;
+    width: auto;
+}
+.flipped {
+    transform: scaleX(-1);
 }
 
-
-.main div {
-    flex-grow: 8;
+.footer {
+    flex-grow: 1;
 }
 
-.main div.side {
-    flex-grow: 2;
+.center {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+.center.main {
+    flex-grow: 10;
+}
+.center.main.player,
+.center.main.computer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.center.side {
+    flex-grow: 1;
+}
+.center.main.score {
+    border: 1px solid lightblue;
+    flex-grow: 3;
+    display: flex;
+    align-items: center;
+
+}
+.scorebox {
+    flex: 0;
+    /* width: 200px; */
+    /* height: 200px; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.individual-scores {
+    display: flex;
+}
+
+.individual-scores > * {
+    flex-basis: 0;
+>>>>>>> 6c37428e358e8af10e411438c1da4c3fad4f7e90
 }
