@@ -1,3 +1,25 @@
+//player selection by clicking
+let playerSelection = '';
+const images = document.querySelectorAll('div.player img');
+// console.log(images);
+const imagesArray = [...images];
+// console.log(imagesArray);
+// console.log(Array.isArray(imagesArray)); 
+imagesArray.forEach( (image) => {
+    image.addEventListener('click', () => {
+        let value = image.getAttribute('data-selection');
+        console.log(value);
+        console.log(image);
+        playerSelection = value;
+        // console.log(playerSelection);
+    })
+})
+console.log(playerSelection);
+// for (i = 0; i > 3; i++) {
+//     console. log(images.)
+// }
+
+
 
 // gets the computer choice
 function getComputerChoice(num) {
@@ -63,36 +85,38 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
+// console.log(result);
+
 // console.log(playRound(playerSelection, computerSelection));
 // plays the game (5 rounds)
-function game() {
-    let playerScore = 0;
-    let computerScore = 0; 
-    for (i = 1; i < 6; i++) {
-        let roundNumber = i;
-        console.log('Round number: ' + i);
-        // let userInput = capitalizeWord(prompt('Please, select your champion! (Rock, Paper or Scissors)'));
-        //        console.log('You chose: ' + userInput);
-        let userInput = 'rock';
-        let playerSelection = userInput;
-        let computerSelection = getComputerChoice();
-        console.log('You picked: ' + playerSelection + '.\n' + 'The computer picked: ' + computerSelection + '.');
-        let score = playRound(playerSelection, computerSelection);
-//        console.log(score);
-        if (score == 'win') {
-            playerScore++;
-        } else if (score == 'loss') {
-            computerScore++;
-        }
-        console.log('The score is: ' + playerScore + ' to ' + computerScore + '.');
+// function game() {
+//     let playerScore = 0;
+//     let computerScore = 0; 
+//     for (i = 1; i < 6; i++) {
+//         let roundNumber = i;
+//         console.log('Round number: ' + i);
+//         // let userInput = capitalizeWord(prompt('Please, select your champion! (Rock, Paper or Scissors)'));
+//         //        console.log('You chose: ' + userInput);
+//         let userInput = 'rock';
+//         let playerSelection = userInput;
+//         let computerSelection = getComputerChoice();
+//         console.log('You picked: ' + playerSelection + '.\n' + 'The computer picked: ' + computerSelection + '.');
+//         let score = playRound(playerSelection, computerSelection);
+// //        console.log(score);
+//         if (score == 'win') {
+//             playerScore++;
+//         } else if (score == 'loss') {
+//             computerScore++;
+//         }
+//         console.log('The score is: ' + playerScore + ' to ' + computerScore + '.');
 
-        // (score == 'win') ? playerScore++ :
-        //     (score == 'loss') ? computerScore++
+//         // (score == 'win') ? playerScore++ :
+//         //     (score == 'loss') ? computerScore++
 
-    }
-    (playerScore > computerScore) ? console.log(`CONGRATULATIONS YOU WON ${playerScore} to ${computerScore}, you are THE CHAMPION!` ) :
-        (playerScore < computerScore) ? console.log(`BEATEN by a computer ${playerScore} to ${computerScore}, I expected more from you!` ) :
-        console.log(`It\'s a tie ${playerScore} to ${computerScore}, better luck next time!`);
+//     }
+//     (playerScore > computerScore) ? console.log(`CONGRATULATIONS YOU WON ${playerScore} to ${computerScore}, you are THE CHAMPION!` ) :
+//         (playerScore < computerScore) ? console.log(`BEATEN by a computer ${playerScore} to ${computerScore}, I expected more from you!` ) :
+//         console.log(`It\'s a tie ${playerScore} to ${computerScore}, better luck next time!`);
 
-}
-game();
+// }
+// game();
